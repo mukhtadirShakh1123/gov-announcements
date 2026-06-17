@@ -1,0 +1,212 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-border);
+  transition: background var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card:hover::before {
+  background: var(--color-accent);
+}
+
+/* Urgent card styling */
+.card--urgent {
+  border-color: var(--color-urgent-border);
+}
+
+.card--urgent::before {
+  background: var(--color-urgent);
+  height: 3px;
+}
+
+.card--urgent:hover {
+  border-color: var(--color-urgent);
+}
+
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.card__badges {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.card__category {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card__category--health {
+  background: var(--color-health-bg);
+  color: var(--color-health);
+}
+
+.card__category--transport {
+  background: var(--color-transport-bg);
+  color: var(--color-transport);
+}
+
+.card__category--education {
+  background: var(--color-education-bg);
+  color: var(--color-education);
+}
+
+.card__category--infrastructure {
+  background: var(--color-infrastructure-bg);
+  color: var(--color-infrastructure);
+}
+
+.card__urgent {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  background: var(--color-urgent-bg);
+  color: var(--color-urgent);
+  animation: urgent-pulse 2s ease-in-out infinite;
+}
+
+@keyframes urgent-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.card__bookmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.card__bookmark:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-accent);
+}
+
+.card__bookmark:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.card__bookmark--active {
+  color: var(--color-accent);
+}
+
+.card__bookmark--active:hover {
+  color: var(--color-accent-hover);
+}
+
+.card__link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.card__link:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.card__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: color var(--transition-fast);
+}
+
+.card__link:hover .card__title {
+  color: var(--color-accent);
+}
+
+.card__body {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card__read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-top: var(--space-1);
+  transition: gap var(--transition-fast);
+}
+
+.card__link:hover .card__read-more {
+  gap: var(--space-2);
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.card__id {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  font-family: var(--font-mono);
+}
